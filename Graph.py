@@ -99,6 +99,7 @@ class Graph:
                 self.bfsVisit(n, bfsVisited, bfsList)
         return bfsList
 
+    #Dijkstra's single source shortest path algorithm
     def buildShortestPathTable(self, source):
         distanceTable = {}
         predecessorTable = {}
@@ -135,13 +136,16 @@ class Graph:
 
         self.distanceTable = distanceTable
         self.predecessorTable = predecessorTable
-
-    def shortestPath(self,source, dest):
+    
+    #Returns the shortest path from source to dest vertices (if a path exists).
+    #Dijkstra's algorithm DOES NOT work with negative edges.
+    def shortestPath(self,source, dest, buildTable=True):
         if source not in self.vMap or dest not in self.vMap:
             return 'Path does not exist.'
         dest = self.vMap[dest].index #Get adjList index of destination
         source = self.vMap[source].index #Get adjList index of source
-        self.buildShortestPathTable(source)
+        if buildTable:
+            self.buildShortestPathTable(source)
         stack = [self.vList[dest].data]
         currentVertex = self.predecessorTable[dest]
         while currentVertex != source:
