@@ -151,20 +151,3 @@ class Graph:
         stack.insert(0, self.vList[source].data)
         return stack
 
-g = Graph()
-g.addEdge(1,2,6)
-g.addEdge(2,3,1)
-g.addEdge(3,4,7)
-g.addEdge(3,5,11)
-g.addEdge(3,6,66)
-g.addEdge(4,9,11)
-g.addEdge(9,7,1)
-g.addEdge(11,2,12)
-g.addEdge(3,3,1)
-g.addEdge(4,44,1)
-
-path = g.shortestPath(1,11)
-print path
-
-
-''''''
